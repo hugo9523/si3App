@@ -2,8 +2,13 @@ package com.example.myapplication3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -27,13 +32,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestQueue = Volley.newRequestQueue(this);
+        CreateTableRow((TableLayout) findViewById(R.id.tbl_layout01),R.drawable.leg02,"las cosas te ayudan a blablablab");
 
+//        requestQueue = Volley.newRequestQueue(this);
+//
+        int a=2;
     }
     public void clickReq(View v)
     {
         int a =1;
-        makeJsonRequest();
+        //makeJsonRequest();
+    }
+    protected void CreateTableRow(TableLayout ptr_tblLayout, int img_src , String Texto)
+    {
+        TableRow row= new TableRow(this);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(100, 100, 0, 0);
+
+
+        row.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+        ImageView img_view= new ImageView(this);
+        TextView descripcion = new TextView(this);
+        img_view.setImageDrawable(getResources().getDrawable(img_src, getApplicationContext().getTheme()));
+
+        row.setLayoutParams(lp);
+        descripcion.setLayoutParams(lp);
+
+        /*img_view.setImageResource(R.drawable.arm01);
+        myImgView.setBackgroundResource(R.drawable.monkey);
+         myImgView.setImageDrawable(getResources().getDrawable(R.drawable.monkey));
+*/
+        descripcion.setText(Texto);
+
+
+        row.addView(img_view);
+        row.addView(descripcion);
+
+
+        ptr_tblLayout.addView(row);
     }
     protected  void makeJsonRequest()
     {
