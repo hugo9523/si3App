@@ -2,9 +2,11 @@ package com.example.myapplication3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -28,6 +30,8 @@ import com.android.volley.toolbox.Volley;
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
+    public static final String EXTRA_MESSAGE = "com.example.myapplication3.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +42,30 @@ public class MainActivity extends AppCompatActivity {
 //
         int a=2;
     }
+    View.OnClickListener onclickBrazo;
+    View.OnClickListener onclickTorso;
+    View.OnClickListener onclickPierna;
+    public void initClickLIsteners()
+    {
+        onclickPierna= new View.OnClickListener(){
+            public void onClick(View v){
+                /*nos va a iniciar una actividad*/
+            }
+        };
+    }
     public void clickReq(View v)
     {
         int a =1;
+       goToSubCategory();
         //makeJsonRequest();
+    }
+    protected void goToSubCategory()
+    {
+        Intent intent = new Intent(this, ejercicioSubCategoria.class);
+        TextView editText = (TextView) findViewById(R.id.idtext);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
     protected void CreateTableRow(TableLayout ptr_tblLayout, int img_src , String Texto)
     {
@@ -55,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView img_view= new ImageView(this);
         TextView descripcion = new TextView(this);
         img_view.setImageDrawable(getResources().getDrawable(img_src, getApplicationContext().getTheme()));
+        img_view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
 
+            }
+        });
         row.setLayoutParams(lp);
         descripcion.setLayoutParams(lp);
 
