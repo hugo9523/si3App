@@ -27,6 +27,9 @@ import org.json.*;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
@@ -61,10 +64,21 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void goToSubCategory()
     {
-        Intent intent = new Intent(this, ejercicioSubCategoria.class);
+
+         foo mfoo= new foo();
+        foo mfoo2= new foo();
+        mfoo2.a="bbb";
+        ArrayList<foo> fooArrayList = new ArrayList<foo>();
+
+        fooArrayList.add(mfoo);
+        fooArrayList.add(mfoo2);
+
         TextView editText = (TextView) findViewById(R.id.idtext);
         String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+
+        Intent intent = new Intent(this, ejercicioSubCategoria.class);
+        intent.putExtra("foo", fooArrayList);
+
         startActivity(intent);
     }
     protected void CreateTableRow(TableLayout ptr_tblLayout, int img_src , String Texto)

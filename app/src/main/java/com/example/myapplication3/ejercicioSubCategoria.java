@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ejercicioSubCategoria extends AppCompatActivity {
 
     @Override
@@ -14,10 +16,10 @@ public class ejercicioSubCategoria extends AppCompatActivity {
         setContentView(R.layout.activity_ejercicio_sub_categoria);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        ArrayList<foo> fooArrayList = intent.getExtras().getParcelableArrayList("foo");
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        //textView.setText(a.a);
     }
 }
