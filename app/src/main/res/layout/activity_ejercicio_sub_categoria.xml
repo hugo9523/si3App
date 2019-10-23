@@ -6,13 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ejercicioSubCategoria">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="235dp"
-        android:text="esta es otra actividad. "
+    <TableLayout
+        android:id="@+id/tbl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
